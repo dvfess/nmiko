@@ -56,17 +56,17 @@ def main(ip, user, passwd, cliLogger):
 
     logBuffer += hostname+'\n'
 
-    # ФИЛЬТРАЦИЯ ЛОГОВ ЧЕРЕЗ ФУНКЦИЮ ФИЛЬТРАЦИИ
-    # Если нужно несколько фильтров. Больше применимо к цискам.
-    for messages in results:
-        # Фильтруем сообщения только по интересующим строкам
-        filtered = list(filter(strFilter, messages.splitlines()))
-        for line in filtered:
-            logBuffer += line + '\n'
-
-    # # Тупой сбор логов. Если нужна фильтрация, указывается в команде
+    # # ФИЛЬТРАЦИЯ ЛОГОВ ЧЕРЕЗ ФУНКЦИЮ ФИЛЬТРАЦИИ
+    # # Если нужно несколько фильтров. Больше применимо к цискам.
     # for messages in results:
-    #     logBuffer += messages
+    #     # Фильтруем сообщения только по интересующим строкам
+    #     filtered = list(filter(strFilter, messages.splitlines()))
+    #     for line in filtered:
+    #         logBuffer += line + '\n'
+
+    # Тупой сбор логов. Если нужна фильтрация, указывается в команде
+    for messages in results:
+        logBuffer += messages
 
     return logBuffer
 

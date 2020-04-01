@@ -17,8 +17,7 @@ locale.setlocale(locale.LC_ALL, 'en_US.utf8')
 
 # Используем  потокобезопасную библиотеку logger для записи результата в файл
 fileLogger = logging.getLogger(__name__)
-logFormatter = logging.Formatter(
-    "%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
+logFormatter = logging.Formatter("%(message)s")
 fileHandler = logging.FileHandler(config.FILENAME)
 fileHandler.setLevel(logging.INFO)
 fileHandler.setFormatter(logFormatter)
@@ -29,6 +28,8 @@ fileLogger.addHandler(fileHandler)
 cliLog = logging.getLogger(__name__)
 CliHandler = logging.StreamHandler(sys.stdout)
 CliHandler.setLevel(logging.INFO)
+logFormatter = logging.Formatter(
+    "%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
 CliHandler.setFormatter(logFormatter)
 cliLog.addHandler(CliHandler)
 
